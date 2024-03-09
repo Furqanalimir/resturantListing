@@ -39,7 +39,7 @@ function validateReviewBody(reviewParam = {}) {
 function validateReviewResponseBody(reviewParam = {}) {
     const param = joi.object({
         response: joi.string().required(),
-        responseBy: joi.string().required()
+        // responseBy: joi.string().required()
     });
 
     const valid = param.validate(reviewParam, {

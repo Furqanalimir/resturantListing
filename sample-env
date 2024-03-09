@@ -1,0 +1,11 @@
+PORT = 8000
+# encryption and token constants
+BCRYPT_SALT= 10
+JWT_PRIVATE_KEY= "qawsedrftgyhujik"
+
+# database constants
+DATABASE_USER = "ali"
+DATABASE_HOST = "localhost"
+DATABASE_NAME = "test"
+DATABASE_PASSWORD = "password"
+DATABASE_PORT = 5432

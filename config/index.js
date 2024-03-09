@@ -6,6 +6,7 @@ dotenv.config();
 
 export default {
   PORT: process.env.PORT || 8000, // default port is 8080
+  ENV: process.env.ENV || "development",
   // encryption and toekn constants
   BCRYPT_SALT: 10,
   JWT_PRIVATE_KEY: "qawsedrftgyhujik",

@@ -41,5 +41,5 @@ process
 server.listen(config.PORT, async () => {
   await db.connectDB();
   await tables.createTables();
-  console.log(`Server running on port: ${config.PORT}`);
+  console.log(`Server running on port: ${config.PORT} in ${config.ENV} mode!`);
 });

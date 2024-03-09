@@ -3,17 +3,7 @@
 // local packages
 import helper from "../helper/index.js";
 import db from "../config/db.js";
-// 
 
-// reservation
-// tableReservationInfo, [Information about table reservations, including availability.] 
-// reservationContacts, 
-// deliveryInfo, [ If the restaurant offers takeaway or delivery services.]
-
-// order
-// orderingContact, 
-// userReviews, 
-// overallRating
 
 /**
  * This function saves menu to database

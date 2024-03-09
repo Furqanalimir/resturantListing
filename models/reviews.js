@@ -3,6 +3,7 @@
 //local package
 import helper from '../helper/index.js'
 import db from '../config/db.js'
+import queryBuilderHelper from '../helper/dbQueryHelper.js'
 
 /**
  * This function addes user to user
@@ -23,7 +24,7 @@ async function addReview(review) {
  * @returns database response
  */
 
-async function findAllReviewsByResturantId(resturantId, fields = `id, user_id, restaurant_id, rating, comment, response, updatedBy, created_at, updated_at`) {
+async function findAllReviewsByResturantId(resturantId, fields = `id, user_id, restaurant_id, rating, comment, response, responseBy, created_at, updated_at`) {
 
     const queryOpts = {
         text: `SELECT ${fields} from reviews where restaurant_id = '${resturantId}'`,
@@ -37,53 +38,28 @@ async function findAllReviewsByResturantId(resturantId, fields = `id, user_id, r
  * @param {Object} review
  * @returns response or error from database 
  */
-async function addReviewResponse(id, cols){
+async function addReviewResponse(id, respondedBy, cols) {
     // Setup static beginning of query
     let query = ['UPDATE reviews SET'];
     let { set, values } = queryBuilderHelper.createUpdateDBQuery(cols);
-    set.push("updated_at =  NOW()");
 
+    set.push("updated_at =  NOW()");
+    set.push(`responseBy = '${respondedBy}'`)
+
+    query.push(set.join(', '));
     query.push(`WHERE id = '${id}'`);
+
     const updateQuery = query.join(" ");
     const queryOpts = {
         text: updateQuery,
         values: values
-      }
-      return await db.getDB().query(queryOpts);
+    }
+    return await db.getDB().query(queryOpts);
 }
-
-// /**
-//  * This function finds user by phone
-//  * @param {string} phone 
-//  * @returns matched user or null
-//  */
-// async function findUserByPhone(phone, fields = "id, fullName, email, phone, password, role") {
-//     const queryOpts = {
-//         text: `SELECT ${fields} FROM users WHERE phone = $1`,
-//         values: [phone]
-//     }
-//     return await db.getDB().query(queryOpts);
-// }
-
-// /**
-//  * This function finds user by email or phone
-//  * @param {string} email, phone
-//  * @returns matched user or null
-//  */
-// async function findUserByEmailOrPhone(email, phone, fields = "id, fullName, email, phone, password, role, created_at") {
-//     const queryOpts = {
-//         text: `SELECT ${fields} FROM users WHERE phone = $1 OR email = $2`,
-//         values: [phone, email]
-//     }
-//     return await db.getDB().query(queryOpts);
-// }
 
 
 export default {
     addReview,
     findAllReviewsByResturantId,
     addReviewResponse,
-    // findUserByEmailOrPhone,
-    // findUserByEmail,
-    // findUserByPhone,
 }

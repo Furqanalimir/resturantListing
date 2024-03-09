@@ -51,10 +51,10 @@ async function addReviewResponse(req, res) {
     try {
         const reviewResponse = req.body;
         const id = req.params.id;
-
+        
         reviewValidator.validateReviewResponseBody(reviewResponse);
 
-        const updatedReview = await models.addReviewResponse(id, reviewResponse);
+        const updatedReview = await models.addReviewResponse(id, req.userId, reviewResponse);
         return res.status(200).send({
             data: updatedReview.rows,
             error: null,
