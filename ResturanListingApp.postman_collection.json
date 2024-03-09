@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "f0d100c3-9b14-43b8-a6dd-9afffa04efeb",
+		"name": "Resturan Listing App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33477283"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fullName\": \"ali\",\n    \"email\": \"ali@gmail.com\",\n    \"phone\": 1234567890,\n    \"password\": \"1234567890\",\n    \"role\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/users/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ali@gmail.com\",\n    \"password\": \"1234567890\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resturant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5YzE3MDliLTBmZjAtNDYxZS04MGU1LWViMTcyMjliODAzNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTQ5NDMzOSwiZXhwIjoxNzA5NDk3OTM5fQ.iZKmPOl9tFm3oQt0GeASOjLh2oNMajUezn9lwuDi4Eo"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"bk\",\n    \"description\": \"bk\",\n    \"category\": \"bk\",\n    \"address\": \"near bk\",\n    \"city\": \"bk\",\n    \"state\": \"bk\",\n    \"country\": \"bk\",\n    \"zipCode\": \"5434\",\n    \"phone\": 8971535801,\n    \"email\": \"das@gmail.com\",\n    \"website\": \"das.com\",\n    \"socialMedia\": {\n        \"fb\": \"das.com\",\n        \"twitter\": \"das.in\"\n    },\n    \"openTime\": \"9am - 11pm\",\n    \"tags\": [\n        \"tag1\",\n        \"tag2\"\n    ],\n    \"daysOfOperation\": \"mon to fri\",\n    \"resturantPics\": [\"not\"]\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/resturant",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"resturant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update resturant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"leons restorant\",\n    \"description\": \"this is a bk restorant\"\n \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/resturant/e81cee80-1343-4534-ab6a-51d9c7ac2f3a",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"resturant",
+						"e81cee80-1343-4534-ab6a-51d9c7ac2f3a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch all resturants",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/resturant",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"resturant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add menu",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resturantId\": \"240fb3b4-ce0d-413a-8a72-e986bbd37e4e\",\n    \"menuCategories\": \"snacks\",\n    \"itemName\": \"shawrma\",\n    \"image\": \"image.jpg\",\n    \"ingredients\": \"vegetables\",\n    \"description\": \"This is the first item\",\n    \"price\": 12,\n    \"totalReviewers\": 10,\n    \"avgReviews\": 4.9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch resturant menu",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/menu/240fb3b4-ce0d-413a-8a72-e986bbd37e4e",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menu",
+						"240fb3b4-ce0d-413a-8a72-e986bbd37e4e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add review",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurant_id\": \"e81cee80-1343-4534-ab6a-51d9c7ac2f3a\",\n    \"rating\": 5,\n    \"comment\": \"this resturant is grass and im a lawn mover\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/review",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch resturant reviews",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/review/all/e81cee80-1343-4534-ab6a-51d9c7ac2f3a",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"review",
+						"all",
+						"e81cee80-1343-4534-ab6a-51d9c7ac2f3a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add review response",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/review/response/27bb2031-1aba-4672-9b4b-6b8d11c3ff60",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"review",
+						"response",
+						"27bb2031-1aba-4672-9b4b-6b8d11c3ff60"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

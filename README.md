@@ -11,3 +11,6 @@ This is a resturant listing app written in nodejs.
 
 # Start Server
    `Run: npm run start`
+
+# Postman Collection
+  you can import postman collection, which is under the name `ResturanListingApp.postman_collection.json`
