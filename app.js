@@ -3,7 +3,7 @@
 
 // npm packages
 import express from "express";
-const server = express();
+const app = express();
 
 // local packages
 import db from "./config/db.js";
@@ -15,18 +15,18 @@ import menuRoutes from './routers/menu.js';
 import reviewRoutes from './routers/review.js';
 
 // express middleware
-server.use(express.json());
+app.use(express.json());
 
-// test server
-server.get("/", (req, res) => {
+// test Server default route
+app.get("/", (req, res) => {
   res.status(200).send("ok");
 });
 
 // register routes
-server.use("/users", userRoutes);
-server.use("/resturant", resturantRoutes);
-server.use("/menu", menuRoutes);
-server.use("/review", reviewRoutes);
+app.use("/users", userRoutes);
+app.use("/resturant", resturantRoutes);
+app.use("/menu", menuRoutes);
+app.use("/review", reviewRoutes);
 
 // handle/cath any unhandled exception/rejection
 process
@@ -38,7 +38,7 @@ process
     process.exit(1);
   });
 
-server.listen(config.PORT, async () => {
+app.listen(config.PORT, async () => {
   await db.connectDB();
   await tables.createTables();
   console.log(`Server running on port: ${config.PORT} in ${config.ENV} mode!`);
