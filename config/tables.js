@@ -33,7 +33,9 @@ const createResturantTable = `
     tags TEXT[],
     openTime VARCHAR(30) NOT NULL,
     daysOfOperation VARCHAR(20) NOT NULL,
-    resturantPics TEXT[],
+    resturantPic VARCHAR(200),
+    orderContact NUMERIC(20) NOT NULL,
+    bookingContact NUMERIC(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )`;

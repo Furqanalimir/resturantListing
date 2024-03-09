@@ -12,8 +12,7 @@ import db from "../config/db.js";
  */
 async function saveMenu(menu) {
     menu.id = helper.generateId();
-    const insertQuery = `INSERT INTO menu (id, resturantId, menuCategories, itemName, image, ingredients, description, 
-            price) VALUES
+    const insertQuery = `INSERT INTO menu (id, resturantId, menuCategories, itemName, image, ingredients, description, price) VALUES
           ('${menu.id}', '${menu.resturantId}', '${menu.menuCategories}', '${menu.itemName}', '${menu.image}',
           '${menu.ingredients}', '${menu.description}', '${menu.price}')`;
 

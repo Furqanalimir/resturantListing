@@ -5,15 +5,13 @@ import joi from 'joi'
 
 function validateAddMenu(menuDetails) {
     const param = joi.object({
-        resturantId: joi.string().required(),
-        menuCategories: joi.string().required(),
-        itemName: joi.string().required(),
         image: joi.string(),
+        menuCategories: joi.string().required(),
+        resturantId: joi.string().required(),
+        itemName: joi.string().required(),
         ingredients: joi.string().required(),
         description: joi.string().required(),
-        price: joi.number().required(),
-        totalReviewers: joi.number(),
-        avgReviews: joi.number(),
+        price: joi.number().required()
     })
     const valid = param.validate(menuDetails, {
         allowUnknown: false,

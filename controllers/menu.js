@@ -15,11 +15,13 @@ import menuModels from "../models/menu.js";
  */
 async function addMenu(req, res) {
     try {
-        const menu = req.body;
+        let menu = req.body;
+        menu.image = req?.file?.path || "";
+
         //validating body parameters
         menuValidator.validateAddMenu(menu);
-        await menuModels.saveMenu(menu);
 
+        await menuModels.saveMenu(menu);
         return res.status(200).send({
             data: "Menu added!",
             error: null,

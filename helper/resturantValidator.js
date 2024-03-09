@@ -23,6 +23,8 @@ function validateResurantDetails(resturantInfo = {}) {
     website: joi.string(),
     socialMedia: joi.object(),
     tags: joi.array(),
+    orderContact: joi.number().required(),
+    bookingContact: joi.number().required(),
     openTime: joi
       .string()
       .required()
@@ -32,8 +34,7 @@ function validateResurantDetails(resturantInfo = {}) {
       .required()
       .error(
         () => new Error("daysOfOperation should be string (e.g, Mon to Fri")
-      ),
-    resturantPics: joi.array(),
+      )
   });
 
   const valid = param.validate(resturantInfo, {

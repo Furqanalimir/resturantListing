@@ -25,11 +25,11 @@ async function saveResturant(resturant) {
   resturant.id = helper.generateId();
 
   const insertQuery = `INSERT INTO resturants (id, creatorId, name, description, category, address, city, state, country, zipCode,
-    phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantPics) VALUES
+    phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantPic, orderContact, bookingContact) VALUES
         ('${resturant.id}', '${resturant.creatorId}', '${resturant.name}', '${resturant.description}', '${resturant.category}',
         '${resturant.address}', '${resturant.city}', '${resturant.state}', '${resturant.country}', '${resturant.zipCode}',
-        '${resturant.phone}', '${resturant.email}', '${resturant.website}', '${socialMedia}',
-        '${tags}', '${resturant.openTime}', '${resturant.daysOfOperation}', '{"pic1.jpg", "pic2.jpg", "pic3.jpg"}' )`;
+        '${resturant.phone}', '${resturant.email}', '${resturant.website}', '${socialMedia}','${tags}', '${resturant.openTime}', 
+        '${resturant.daysOfOperation}', '${resturant.resturantPics}', ${resturant.orderContact}, ${resturant.bookingContact})`;
 
   await db.getDB().query(insertQuery);
   return resturant
@@ -42,7 +42,7 @@ async function saveResturant(resturant) {
  */
 async function findResturantById(id,
   fields = `id, creatorId, name, description, category, address, city, state, 
-  country, zipCode, phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantPics, created_at, updated_at`) {
+  country, zipCode, phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantPics, orderContact, created_at, updated_at`) {
 
   const queryOpts = {
     text: `SELECT ${fields} FROM resturants WHERE id = $1`,
@@ -61,7 +61,6 @@ async function updateResturantById(id, cols) {
 
   // Setup static beginning of query
   let query = ['UPDATE resturants SET'];
-  // const values = []
 
   // Create another array storing each set command
   // and assigning a number value for parameterized query

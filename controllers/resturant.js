@@ -22,6 +22,7 @@ async function addResturant(req, res) {
     resturantValidator.validateResurantDetails(resturant);
 
     resturant.creatorId = req.userId;
+    resturant.resturantPics = req?.file?.path || "";
     const newResturant = await models.saveResturant(resturant);
     return res.status(200).send({
       data: newResturant,
