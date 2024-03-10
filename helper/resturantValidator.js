@@ -43,10 +43,7 @@ function validateResurantDetails(resturantInfo = {}) {
   });
 
   if (valid.error) {
-    console.log(
-      "ERR[helper/resturantValidator.js], func-validateResurantDetails",
-      valid.error.details
-    );
+    console.log("ERR[helper/resturantValidator.js], func-validateResurantDetails", valid.error.details);
     throw new Error(valid.error);
   }
   return;
@@ -92,10 +89,7 @@ function validateResturantUpdateDetails(resturantInfo = {}) {
   });
 
   if (valid.error) {
-    console.log(
-      "ERR[helper/resturantValidator.js], func-validateResurantDetails",
-      valid.error.details
-    );
+    console.log("ERR[helper/resturantValidator.js], func-validateResurantDetails", valid.error.details);
     throw new Error(valid.error);
   }
   return;
@@ -106,16 +100,13 @@ function validateParamsId(id) {
     id: joi.string().required(),
   });
 
-  const valid = param.validate({id}, {
+  const valid = param.validate({ id }, {
     allowUnknown: false,
     default: false,
   });
 
   if (valid.error) {
-    console.log(
-      "ERR[helper/validator.js], func-validateParamsId",
-      valid.error.details
-    );
+    console.log("ERR[helper/validator.js], func-validateParamsId", valid.error.details);
     throw new Error(valid.error);
   }
   return;

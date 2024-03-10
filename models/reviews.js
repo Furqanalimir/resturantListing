@@ -57,9 +57,16 @@ async function addReviewResponse(id, respondedBy, cols) {
     return await db.getDB().query(queryOpts);
 }
 
-
+async function deleteReviewById(id) {
+    const queryOpts = {
+        text: `DELETE FROM reviews WHERE id = $1`,
+        values: [id]
+    }
+    return await db.getDB().query(queryOpts);
+}
 export default {
     addReview,
     findAllReviewsByResturantId,
     addReviewResponse,
+    deleteReviewById,
 }

@@ -63,7 +63,7 @@
 			"response": []
 		},
 		{
-			"name": "resturant",
+			"name": "add resturant",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -87,8 +87,104 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"bk\",\n    \"description\": \"bk\",\n    \"category\": \"bk\",\n    \"address\": \"near bk\",\n    \"city\": \"bk\",\n    \"state\": \"bk\",\n    \"country\": \"bk\",\n    \"zipCode\": \"5434\",\n    \"phone\": 8971535801,\n    \"email\": \"das@gmail.com\",\n    \"website\": \"das.com\",\n    \"socialMedia\": {\n        \"fb\": \"das.com\",\n        \"twitter\": \"das.in\"\n    },\n    \"openTime\": \"9am - 11pm\",\n    \"tags\": [\n        \"tag1\",\n        \"tag2\"\n    ],\n    \"daysOfOperation\": \"mon to fri\",\n    \"resturantPics\": [\"not\"]\n}"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/home/hussain/Pictures/Screenshots/Screenshot from 2024-03-09 17-03-47.png"
+						},
+						{
+							"key": "name",
+							"value": "mcDonlad",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "it is macd",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "fast food",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "hsr layout",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "bangalore",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "karnatka",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "india",
+							"type": "text"
+						},
+						{
+							"key": "zipCode",
+							"value": "560068",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "1234567890",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "website",
+							"value": "macd.com",
+							"type": "text"
+						},
+						{
+							"key": "socialMedia[fb]",
+							"value": "fb.com/macd",
+							"type": "text"
+						},
+						{
+							"key": "tags",
+							"value": "tag1",
+							"type": "text"
+						},
+						{
+							"key": "orderContact",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "bookingContact",
+							"value": "123457890",
+							"type": "text"
+						},
+						{
+							"key": "openTime",
+							"value": "9am - 11pm",
+							"type": "text"
+						},
+						{
+							"key": "daysOfOperation",
+							"value": "mon-sun",
+							"type": "text"
+						},
+						{
+							"key": "tags",
+							"value": "tag2",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
 					"raw": "localhost:8000/resturant",
@@ -185,13 +281,54 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"resturantId\": \"240fb3b4-ce0d-413a-8a72-e986bbd37e4e\",\n    \"menuCategories\": \"snacks\",\n    \"itemName\": \"shawrma\",\n    \"image\": \"image.jpg\",\n    \"ingredients\": \"vegetables\",\n    \"description\": \"This is the first item\",\n    \"price\": 12,\n    \"totalReviewers\": 10,\n    \"avgReviews\": 4.9\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/hussain/Pictures/Screenshots/Screenshot from 2024-03-09 17-03-47.png"
+						},
+						{
+							"key": "resturantId",
+							"value": "d05f26a6-42b2-4e73-8ae2-71a6c0c27236",
+							"type": "text"
+						},
+						{
+							"key": "menuCategories",
+							"value": "snacks",
+							"type": "text"
+						},
+						{
+							"key": "itemName",
+							"value": "pie",
+							"type": "text"
+						},
+						{
+							"key": "ingredients",
+							"value": "apple and barley",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "an apple pie made from apple and barley",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "totalReviewers",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "avgReviews",
+							"value": "5",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "localhost:8000/menu",
@@ -209,18 +346,13 @@
 		{
 			"name": "fetch resturant menu",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
-							"type": "string"
-						}
-					]
-				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90"
+					}
+				],
 				"url": {
 					"raw": "localhost:8000/menu/240fb3b4-ce0d-413a-8a72-e986bbd37e4e",
 					"host": [
@@ -305,8 +437,27 @@
 		{
 			"name": "add review response",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"response\": \"did you eat tho\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:8000/review/response/27bb2031-1aba-4672-9b4b-6b8d11c3ff60",
 					"host": [
@@ -317,6 +468,35 @@
 						"review",
 						"response",
 						"27bb2031-1aba-4672-9b4b-6b8d11c3ff60"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete review",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/review/844904aa-331f-459c-842a-b724623bee54",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"review",
+						"844904aa-331f-459c-842a-b724623bee54"
 					]
 				}
 			},

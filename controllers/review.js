@@ -17,7 +17,7 @@ async function addReview(req, res) {
         const review = await models.addReview(reviewDetails)
 
         return res.status(200).send({
-            data: review.rows,
+            data: review.rowCount,
             error: null,
         });
     } catch (err) {
@@ -51,12 +51,29 @@ async function addReviewResponse(req, res) {
     try {
         const reviewResponse = req.body;
         const id = req.params.id;
-        
+
         reviewValidator.validateReviewResponseBody(reviewResponse);
 
         const updatedReview = await models.addReviewResponse(id, req.userId, reviewResponse);
         return res.status(200).send({
-            data: updatedReview.rows,
+            data: updatedReview.rowCount,
+            error: null,
+        });
+    } catch (err) {
+        console.log("ERR[controllers/review.js], func-addReview", err);
+        return res.status(500).send({
+            data: null,
+            error: err.message || err,
+        });
+    }
+}
+
+async function deleteReview(req, res) {
+    try {
+        const id = req.params.id;
+        const deletedReview = await models.deleteReviewById(id);
+        return res.status(200).send({
+            data: deletedReview.rowCount,
             error: null,
         });
     } catch (err) {
@@ -72,4 +89,5 @@ export default {
     addReview,
     fetchResturantReviews,
     addReviewResponse,
+    deleteReview,
 }

@@ -17,5 +17,6 @@ router.post("/response/:id", middleware.authenticateByRoles(['owner', 'admin']),
 router.use(middleware.authenticateByRoles(['admin', 'user']));
 // routes
 router.post("/", reviewController.addReview);
+router.delete("/:id", reviewController.deleteReview);
 
 export default router;
