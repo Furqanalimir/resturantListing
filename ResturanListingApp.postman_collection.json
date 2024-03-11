@@ -501,6 +501,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "delete resturant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYzk4YTU5LTllYzctNDkwMS04OWRiLWQ2ZWJjN2JhZWM5ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTgwNjQ2NSwiZXhwIjoxNzEyMzk4NDY1fQ.fZI4PNnfj0M2_LpfQiskPHBIa9dITnUEe1HuH3Nrz90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/resturant/d05f26a6-42b2-4e73-8ae2-71a6c0c27236",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"resturant",
+						"d05f26a6-42b2-4e73-8ae2-71a6c0c27236"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

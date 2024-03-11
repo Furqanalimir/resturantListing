@@ -75,6 +75,13 @@ async function updateResturant(req, res) {
   }
 }
 
+/**
+ * This function fetches resturant from database
+ * @param   {Object}  req
+ * @param   {Object}  res
+ * @throws  {Error}   if validation fails or there is error in updaing resturant list
+ * @returns {Object}  with success response or error response
+ */
 async function fetchAllResturants(req, res) {
   try {
     const resturants = await models.findAllResturants();
@@ -99,8 +106,25 @@ async function fetchAllResturants(req, res) {
   }
 }
 
+async function deleteResturant(req, res) {
+  try {
+      const id = req.params.id;
+      const deletedResturant = await models.deleteResturantById(id);
+      return res.status(200).send({
+          data: deletedResturant.rowCount,
+          error: null,
+      });
+  } catch (err) {
+      console.log("ERR[controllers/resturant.js], func-deleteResturant", err);
+      return res.status(500).send({
+          data: null,
+          error: err.message || err,
+      });
+  }
+}
 export default {
   addResturant,
   updateResturant,
   fetchAllResturants,
+  deleteResturant,
 };

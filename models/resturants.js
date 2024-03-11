@@ -29,7 +29,7 @@ async function saveResturant(resturant) {
         ('${resturant.id}', '${resturant.creatorId}', '${resturant.name}', '${resturant.description}', '${resturant.category}',
         '${resturant.address}', '${resturant.city}', '${resturant.state}', '${resturant.country}', '${resturant.zipCode}',
         '${resturant.phone}', '${resturant.email}', '${resturant.website}', '${socialMedia}','${tags}', '${resturant.openTime}', 
-        '${resturant.daysOfOperation}', '${resturant.resturantPics}', ${resturant.orderContact}, ${resturant.bookingContact})`;
+        '${resturant.daysOfOperation}', '${resturant.resturantpic}', ${resturant.orderContact}, ${resturant.bookingContact})`;
 
   await db.getDB().query(insertQuery);
   return resturant
@@ -42,7 +42,7 @@ async function saveResturant(resturant) {
  */
 async function findResturantById(id,
   fields = `id, creatorId, name, description, category, address, city, state, 
-  country, zipCode, phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantPics, orderContact, created_at, updated_at`) {
+  country, zipCode, phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantpic, orderContact, created_at, updated_at`) {
 
   const queryOpts = {
     text: `SELECT ${fields} FROM resturants WHERE id = $1`,
@@ -84,10 +84,23 @@ async function updateResturantById(id, cols) {
  * @returns database response
  */
 async function findAllResturants(fields = `id, creatorId, name, description, category, address, city, state, 
-                country, zipCode, phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantPics, created_at, updated_at`) {
+                country, zipCode, phone, email, website, socialMedia, tags, openTime, daysOfOperation, resturantpic, created_at, updated_at`) {
 
   const queryOpts = {
     text: `SELECT ${fields} from resturants`,
+  }
+  return await db.getDB().query(queryOpts);
+}
+
+/**
+ * This function deletes resturant from datbase
+ * @param {String} id 
+ * @returns databse response or error
+ */
+async function deleteResturantById(id) {
+  const queryOpts = {
+      text: `DELETE FROM resturants WHERE id = $1`,
+      values: [id]
   }
   return await db.getDB().query(queryOpts);
 }
@@ -97,4 +110,5 @@ export default {
   findResturantById,
   updateResturantById,
   findAllResturants,
+  deleteResturantById,
 };

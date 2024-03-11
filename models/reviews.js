@@ -57,6 +57,11 @@ async function addReviewResponse(id, respondedBy, cols) {
     return await db.getDB().query(queryOpts);
 }
 
+/**
+ * This function deletes review from database
+ * @param {String} id 
+ * @returns database error or response
+ */
 async function deleteReviewById(id) {
     const queryOpts = {
         text: `DELETE FROM reviews WHERE id = $1`,

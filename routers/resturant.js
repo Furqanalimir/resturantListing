@@ -9,6 +9,9 @@ import resturantController from "../controllers/resturant.js";
 import authMiddleware from "../middleware/authentication.js";
 import imageMiddleware from '../middleware/imageHandler.js';
 
+
+
+router.delete("/:id", authMiddleware.authenticateByRoles(["admin"]), resturantController.deleteResturant);
 // authentication middleware
 router.use(authMiddleware.authenticateByRoles(["admin", "owner"]));
 // routes
