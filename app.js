@@ -28,6 +28,16 @@ app.use("/resturant", resturantRoutes);
 app.use("/menu", menuRoutes);
 app.use("/review", reviewRoutes);
 
+import { Worker } from 'node:worker_threads';
+app.get("/thread", (req, res) => {
+  const worker = new Worker("./thread.js");
+  worker.on("message", (result) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end(`your value is: ${result}`);
+  })
+})
+
+
 // handle/cath any unhandled exception/rejection
 process
   .on("unhandledRejection", (reason, p) => {
