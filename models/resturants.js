@@ -19,8 +19,10 @@ async function saveResturant(resturant) {
     socialMedia += '}'
   }
 
-  if (resturant.tags) {
+  if (Array.isArray(resturant.tags) && resturant.tags.length > 0) {
     tags = "{" + resturant.tags.map((tag) => `${tag}`).join(" ") + "}"
+  } else {
+    tags = "{}"
   }
   resturant.id = helper.generateId();
 

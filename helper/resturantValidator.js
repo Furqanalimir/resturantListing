@@ -59,7 +59,7 @@ function validateResturantUpdateDetails(resturantInfo = {}) {
   const param = joi.object({
     name: joi.string(),
     description: joi.string(),
-    Category: joi.string(),
+    category: joi.string(),
     address: joi.string(),
     city: joi.string(),
     state: joi.string(),
