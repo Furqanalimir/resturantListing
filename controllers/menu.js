@@ -35,6 +35,13 @@ async function addMenu(req, res) {
     }
 };
 
+/**
+ * This function retrieves menu data of a resturant
+ * @param   {Object}  req
+ * @param   {Objec}   res
+ * @throws  {error}   if validation fails or user email/phone alrady exists
+ * @returns {Object}  with success response or error response
+ */
 async function fetchResturantMenu(req, res){
     
     try{
